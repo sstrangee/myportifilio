@@ -141,7 +141,16 @@ body {
     margin-left: 1.2rem;
   
   }
-  
+
+
+  @media (max-width: 768px) {
+    .nav-menu {
+      padding-top: 45%;    /* bem aqui q e o espacamento */
+        margin-left: 1.5rem;
+      
+      }
+  }
+
   .nav-menu * {
     margin: 0;
     padding: 0;
@@ -180,22 +189,26 @@ body {
   
   /* Mobile Navigation */
   .mobile-nav-toggle {
-    position: absolute;
+    position: fixed;
     right: 15px;
     top: 15px;
     z-index: 9998;
     border: 0;
-    background: none;
-    font-size: 24px;
+    border-radius: 50%;
+    background: #202331;
+    font-size: 18px;
     transition: all 0.4s;
     outline: none !important;
     line-height: 1;
     cursor: pointer;
     text-align: right;
+    padding: 10.6px;
   }
   
   .mobile-nav-toggle i {
+    position: relative;
     color: #ffffff;
+    top: 1.1px;
   }
   
   .mobile-nav-active {
@@ -1290,3 +1303,4 @@ body {
     }
   
   }
+
