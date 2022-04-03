@@ -1,3 +1,6 @@
+$(window).on("load",function(){
+  $(".loader-wrapper").fadeOut("slow");
+});
 
 !(function($) {
   "use strict";
@@ -35,7 +38,7 @@
 
         if ($('body').hasClass('mobile-nav-active')) {
           $('body').removeClass('mobile-nav-active');
-          $('.mobile-nav-toggle i').toggleClass('icofont-navigation-menu icofont-close');
+          $('.mobile-nav-toggle i').toggleClass('icofont-plus icofont-error');
         }
         return false;
       }
@@ -57,7 +60,7 @@
 
   $(document).on('click', '.mobile-nav-toggle', function(e) {
     $('body').toggleClass('mobile-nav-active');
-    $('.mobile-nav-toggle i').toggleClass('icofont-navigation-menu icofont-close');
+    $('.mobile-nav-toggle i').toggleClass('icofont-plus icofont-error');
   });
 
   $(document).click(function(e) {
@@ -65,7 +68,7 @@
     if (!container.is(e.target) && container.has(e.target).length === 0) {
       if ($('body').hasClass('mobile-nav-active')) {
         $('body').removeClass('mobile-nav-active');
-        $('.mobile-nav-toggle i').toggleClass('icofont-navigation-menu icofont-close');
+        $('.mobile-nav-toggle i').toggleClass('icofont-plus icofont-error');
       }
     }
   });
@@ -213,3 +216,4 @@ $(document).on('click', '#nav-menu a, #scrollto', function(e) {
     }
   }
 });
+
