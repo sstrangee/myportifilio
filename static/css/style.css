@@ -145,7 +145,7 @@ body {
 
   @media (max-width: 768px) {
     .nav-menu {
-      padding-top: 45%;    /* bem aqui q e o espacamento */
+      padding-top: 25%;    /* bem aqui q e o espacamento */
         margin-left: 1.5rem;
       
       }
