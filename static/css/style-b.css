@@ -49,16 +49,7 @@ body::-webkit-scrollbar {
   body::-webkit-scrollbar-thumb {
     background-color: #5b5c61;   
     border-radius: 2px;       
-  }
-
-  /* @media (max-width: 1199px) {
-      .cc{
-          color: white;
-          position: relative;
-          top: 5rem;
-          left: 3rem;
-      }
-  } */
+  }  
 
 
   .loader-wrapper {
@@ -103,3 +94,9 @@ body::-webkit-scrollbar {
     75% { height: 100%;}
     100% { height: 0%;}
   }
+
+#ajuste-port{
+  margin-left: 100px;
+  margin-right: 200px;
+  text-align: justify;
+}
