@@ -1,45 +1,50 @@
+from flask_mail import *
 from flask import *
-import smtplib
-from email.message import *
 from segredos import *
 
 app = Flask(__name__)
+app.secret_key = 'thicode'
 
+mail_settings = {
+    "MAIL_SERVER": 'smtp.gmail.com',
+    "MAIL_PORT": 465,
+    "MAIL_USE_TLS": False,
+    "MAIL_USE_SSL": True,
+    "MAIL_USERNAME": email,
+    "MAIL_PASSWORD": senha
+}
+
+app.config.update(mail_settings)
+mail = Mail(app)
 
 @app.route('/')
 def index():
     return render_template('index.html')
 
 
-@app.route('/send', methods=['POST'])
+@app.route('/send', methods=['GET', 'POST'])
 def send():
-    user = request.form.get("name"),
-    emaill = request.form.get("email"),
-    subject = request.form.get("subject"),
-    message = request.form.get("message"),
-    EMAIL_ADDRESS = email
-    EMAIL_PASSWORD = senha
+        user = request.form.get("name"),
+        emaill = request.form.get("email"),
+        subject = request.form.get("subject"),
+        message = request.form.get("message")
 
-    msg = EmailMessage()
-    msg['subject'] = f"{user[0]}"
-    msg['from'] = 'summermenssagem@gmail.com'
-    msg['to'] = 'mateusdosummerblog@gmail.com'
-    msg.set_content(f'''
-    𝗔𝘀𝘀𝘂𝗻𝘁𝗼: {subject[0]}
+        msg = Message(
+            subject=f'{user[0]}',
+            sender=app.config.get("MAIL_USERNAME"),
+            recipients=['mateusdosummerblog@gmail.com'],
+body=f'''
+𝗔𝘀𝘀𝘂𝗻𝘁𝗼: {subject[0]}
 
-𝗠𝗲𝗻𝘀𝘀𝗮𝗴𝗲𝗺: {message[0]}
+𝗘𝗺𝗮𝗶𝗹: {emaill[0]} 
+            
+𝗠𝗲𝗻𝘀𝘀𝗮𝗴𝗲𝗺: {message}
+        
+''')
 
-    𝗘𝗺𝗮𝗶𝗹: {emaill[0]} ''')
-
-    with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
-        smtp.login(EMAIL_ADDRESS, EMAIL_PASSWORD)
-        smtp.send_message(msg)
-    return redirect('/')
-
-
-@app.route('/projetos')
-def projetos():
-    return render_template('projetos.html')
+        mail.send(msg)
+        flash('Mensagem enviada com sucesso!')
+        return redirect('/')
 
 
 if __name__ == '__main__':
