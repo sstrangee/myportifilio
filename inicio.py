@@ -47,5 +47,10 @@ body=f'''
         return redirect('/')
 
 
+@app.route('/projetos')
+def projetos():
+    return render_template('projetos.html')
+
+
 if __name__ == '__main__':
     app.run(debug=True)
